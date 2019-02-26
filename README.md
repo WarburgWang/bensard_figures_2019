@@ -7,7 +7,7 @@ An interactive notebook that can be used to recreate the figures created with th
 
 ### Requirements:  
 Python3   
-pandas
+pandas   
 git-lfs   
 [XPRESStools](https://github.com/XPRESSyourself/XPRESStools)    
 
