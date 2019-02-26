@@ -9,6 +9,6 @@ This repository contains the code needed to specify the indicated figures from t
 * Python3   
 * pandas   
 * git-lfs   
-* [XPRESStools](https://github.com/XPRESSyourself/XPRESStools)    
+* [XPRESStools](https://github.com/XPRESSyourself/XPRESStools) [v0.0.1a1](https://github.com/XPRESSyourself/XPRESStools/releases/tag/XPRESStools-v.0.0.1a1)
 
 
