@@ -12,6 +12,7 @@ Description: The following notebook contains the code required to replicate spec
 import os
 import pandas as pd 
 import xpresstools as xp
+from scipy import stats
 
 #Some data was also processed using Alt Analyze
 
@@ -91,161 +92,161 @@ gse20916_colors = {'Adenocarcinoma': (0.5725490196078431, 0.5843137254901961, 0.
         'Normal': (0.00784313725490196, 0.6196078431372549, 0.45098039215686275)}
 ```
 
-    26-Feb-2019 15:54:45 DEBUG utils - Directory ./ already exists. Skipping.
-    26-Feb-2019 15:54:45 INFO GEOparse - File already exist: using local version.
-    26-Feb-2019 15:54:45 INFO GEOparse - Parsing ./GSE20916_family.soft.gz: 
-    26-Feb-2019 15:54:45 DEBUG GEOparse - DATABASE: GeoMiame
-    26-Feb-2019 15:54:45 DEBUG GEOparse - SERIES: GSE20916
-    26-Feb-2019 15:54:45 DEBUG GEOparse - PLATFORM: GPL570
+    27-Feb-2019 12:58:15 DEBUG utils - Directory ./ already exists. Skipping.
+    27-Feb-2019 12:58:15 INFO GEOparse - File already exist: using local version.
+    27-Feb-2019 12:58:15 INFO GEOparse - Parsing ./GSE20916_family.soft.gz: 
+    27-Feb-2019 12:58:15 DEBUG GEOparse - DATABASE: GeoMiame
+    27-Feb-2019 12:58:15 DEBUG GEOparse - SERIES: GSE20916
+    27-Feb-2019 12:58:15 DEBUG GEOparse - PLATFORM: GPL570
     /anaconda3/lib/python3.6/site-packages/GEOparse/GEOparse.py:84: DtypeWarning:
     
     Columns (2) have mixed types. Specify dtype option on import or set low_memory=False.
     
-    26-Feb-2019 15:54:47 DEBUG GEOparse - SAMPLE: GSM523242
-    26-Feb-2019 15:54:47 DEBUG GEOparse - SAMPLE: GSM523243
-    26-Feb-2019 15:54:47 DEBUG GEOparse - SAMPLE: GSM523244
-    26-Feb-2019 15:54:47 DEBUG GEOparse - SAMPLE: GSM523245
-    26-Feb-2019 15:54:47 DEBUG GEOparse - SAMPLE: GSM523246
-    26-Feb-2019 15:54:47 DEBUG GEOparse - SAMPLE: GSM523247
-    26-Feb-2019 15:54:47 DEBUG GEOparse - SAMPLE: GSM523248
-    26-Feb-2019 15:54:47 DEBUG GEOparse - SAMPLE: GSM523249
-    26-Feb-2019 15:54:47 DEBUG GEOparse - SAMPLE: GSM523250
-    26-Feb-2019 15:54:47 DEBUG GEOparse - SAMPLE: GSM523251
-    26-Feb-2019 15:54:47 DEBUG GEOparse - SAMPLE: GSM523252
-    26-Feb-2019 15:54:47 DEBUG GEOparse - SAMPLE: GSM523253
-    26-Feb-2019 15:54:47 DEBUG GEOparse - SAMPLE: GSM523254
-    26-Feb-2019 15:54:47 DEBUG GEOparse - SAMPLE: GSM523255
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523256
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523257
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523258
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523259
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523260
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523261
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523262
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523263
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523264
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523265
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523266
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523267
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523268
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523269
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523270
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523271
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523272
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523273
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523274
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523275
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523276
-    26-Feb-2019 15:54:48 DEBUG GEOparse - SAMPLE: GSM523277
-    26-Feb-2019 15:54:49 DEBUG GEOparse - SAMPLE: GSM523278
-    26-Feb-2019 15:54:49 DEBUG GEOparse - SAMPLE: GSM523279
-    26-Feb-2019 15:54:49 DEBUG GEOparse - SAMPLE: GSM523280
-    26-Feb-2019 15:54:49 DEBUG GEOparse - SAMPLE: GSM523281
-    26-Feb-2019 15:54:49 DEBUG GEOparse - SAMPLE: GSM523282
-    26-Feb-2019 15:54:49 DEBUG GEOparse - SAMPLE: GSM523283
-    26-Feb-2019 15:54:49 DEBUG GEOparse - SAMPLE: GSM523284
-    26-Feb-2019 15:54:49 DEBUG GEOparse - SAMPLE: GSM523285
-    26-Feb-2019 15:54:49 DEBUG GEOparse - SAMPLE: GSM523286
-    26-Feb-2019 15:54:49 DEBUG GEOparse - SAMPLE: GSM523287
-    26-Feb-2019 15:54:49 DEBUG GEOparse - SAMPLE: GSM523288
-    26-Feb-2019 15:54:49 DEBUG GEOparse - SAMPLE: GSM523289
-    26-Feb-2019 15:54:49 DEBUG GEOparse - SAMPLE: GSM523290
-    26-Feb-2019 15:54:49 DEBUG GEOparse - SAMPLE: GSM523291
-    26-Feb-2019 15:54:49 DEBUG GEOparse - SAMPLE: GSM523292
-    26-Feb-2019 15:54:49 DEBUG GEOparse - SAMPLE: GSM523293
-    26-Feb-2019 15:54:49 DEBUG GEOparse - SAMPLE: GSM523294
-    26-Feb-2019 15:54:49 DEBUG GEOparse - SAMPLE: GSM523295
-    26-Feb-2019 15:54:49 DEBUG GEOparse - SAMPLE: GSM523296
-    26-Feb-2019 15:54:50 DEBUG GEOparse - SAMPLE: GSM523297
-    26-Feb-2019 15:54:50 DEBUG GEOparse - SAMPLE: GSM523298
-    26-Feb-2019 15:54:50 DEBUG GEOparse - SAMPLE: GSM523299
-    26-Feb-2019 15:54:50 DEBUG GEOparse - SAMPLE: GSM523300
-    26-Feb-2019 15:54:50 DEBUG GEOparse - SAMPLE: GSM523301
-    26-Feb-2019 15:54:50 DEBUG GEOparse - SAMPLE: GSM523302
-    26-Feb-2019 15:54:50 DEBUG GEOparse - SAMPLE: GSM523303
-    26-Feb-2019 15:54:50 DEBUG GEOparse - SAMPLE: GSM523304
-    26-Feb-2019 15:54:50 DEBUG GEOparse - SAMPLE: GSM523305
-    26-Feb-2019 15:54:50 DEBUG GEOparse - SAMPLE: GSM523306
-    26-Feb-2019 15:54:50 DEBUG GEOparse - SAMPLE: GSM523307
-    26-Feb-2019 15:54:50 DEBUG GEOparse - SAMPLE: GSM523308
-    26-Feb-2019 15:54:50 DEBUG GEOparse - SAMPLE: GSM523309
-    26-Feb-2019 15:54:50 DEBUG GEOparse - SAMPLE: GSM523310
-    26-Feb-2019 15:54:50 DEBUG GEOparse - SAMPLE: GSM523311
-    26-Feb-2019 15:54:50 DEBUG GEOparse - SAMPLE: GSM523312
-    26-Feb-2019 15:54:50 DEBUG GEOparse - SAMPLE: GSM523313
-    26-Feb-2019 15:54:50 DEBUG GEOparse - SAMPLE: GSM523314
-    26-Feb-2019 15:54:50 DEBUG GEOparse - SAMPLE: GSM523315
-    26-Feb-2019 15:54:50 DEBUG GEOparse - SAMPLE: GSM523316
-    26-Feb-2019 15:54:51 DEBUG GEOparse - SAMPLE: GSM523317
-    26-Feb-2019 15:54:51 DEBUG GEOparse - SAMPLE: GSM523318
-    26-Feb-2019 15:54:51 DEBUG GEOparse - SAMPLE: GSM523319
-    26-Feb-2019 15:54:51 DEBUG GEOparse - SAMPLE: GSM523320
-    26-Feb-2019 15:54:51 DEBUG GEOparse - SAMPLE: GSM523321
-    26-Feb-2019 15:54:51 DEBUG GEOparse - SAMPLE: GSM523322
-    26-Feb-2019 15:54:51 DEBUG GEOparse - SAMPLE: GSM523323
-    26-Feb-2019 15:54:51 DEBUG GEOparse - SAMPLE: GSM523324
-    26-Feb-2019 15:54:51 DEBUG GEOparse - SAMPLE: GSM523325
-    26-Feb-2019 15:54:51 DEBUG GEOparse - SAMPLE: GSM523326
-    26-Feb-2019 15:54:51 DEBUG GEOparse - SAMPLE: GSM523327
-    26-Feb-2019 15:54:51 DEBUG GEOparse - SAMPLE: GSM523328
-    26-Feb-2019 15:54:51 DEBUG GEOparse - SAMPLE: GSM523329
-    26-Feb-2019 15:54:51 DEBUG GEOparse - SAMPLE: GSM523330
-    26-Feb-2019 15:54:51 DEBUG GEOparse - SAMPLE: GSM523331
-    26-Feb-2019 15:54:51 DEBUG GEOparse - SAMPLE: GSM523332
-    26-Feb-2019 15:54:51 DEBUG GEOparse - SAMPLE: GSM523333
-    26-Feb-2019 15:54:51 DEBUG GEOparse - SAMPLE: GSM523334
-    26-Feb-2019 15:54:51 DEBUG GEOparse - SAMPLE: GSM523335
-    26-Feb-2019 15:54:51 DEBUG GEOparse - SAMPLE: GSM523336
-    26-Feb-2019 15:54:52 DEBUG GEOparse - SAMPLE: GSM523337
-    26-Feb-2019 15:54:52 DEBUG GEOparse - SAMPLE: GSM523338
-    26-Feb-2019 15:54:52 DEBUG GEOparse - SAMPLE: GSM523339
-    26-Feb-2019 15:54:52 DEBUG GEOparse - SAMPLE: GSM523340
-    26-Feb-2019 15:54:52 DEBUG GEOparse - SAMPLE: GSM523341
-    26-Feb-2019 15:54:52 DEBUG GEOparse - SAMPLE: GSM523342
-    26-Feb-2019 15:54:52 DEBUG GEOparse - SAMPLE: GSM523343
-    26-Feb-2019 15:54:52 DEBUG GEOparse - SAMPLE: GSM523344
-    26-Feb-2019 15:54:52 DEBUG GEOparse - SAMPLE: GSM523345
-    26-Feb-2019 15:54:52 DEBUG GEOparse - SAMPLE: GSM523346
-    26-Feb-2019 15:54:52 DEBUG GEOparse - SAMPLE: GSM523347
-    26-Feb-2019 15:54:52 DEBUG GEOparse - SAMPLE: GSM523348
-    26-Feb-2019 15:54:52 DEBUG GEOparse - SAMPLE: GSM523349
-    26-Feb-2019 15:54:52 DEBUG GEOparse - SAMPLE: GSM523350
-    26-Feb-2019 15:54:52 DEBUG GEOparse - SAMPLE: GSM523351
-    26-Feb-2019 15:54:52 DEBUG GEOparse - SAMPLE: GSM523352
-    26-Feb-2019 15:54:52 DEBUG GEOparse - SAMPLE: GSM523353
-    26-Feb-2019 15:54:52 DEBUG GEOparse - SAMPLE: GSM523354
-    26-Feb-2019 15:54:52 DEBUG GEOparse - SAMPLE: GSM523355
-    26-Feb-2019 15:54:52 DEBUG GEOparse - SAMPLE: GSM523356
-    26-Feb-2019 15:54:53 DEBUG GEOparse - SAMPLE: GSM523357
-    26-Feb-2019 15:54:53 DEBUG GEOparse - SAMPLE: GSM523358
-    26-Feb-2019 15:54:53 DEBUG GEOparse - SAMPLE: GSM523359
-    26-Feb-2019 15:54:53 DEBUG GEOparse - SAMPLE: GSM523360
-    26-Feb-2019 15:54:53 DEBUG GEOparse - SAMPLE: GSM523361
-    26-Feb-2019 15:54:53 DEBUG GEOparse - SAMPLE: GSM523362
-    26-Feb-2019 15:54:53 DEBUG GEOparse - SAMPLE: GSM523363
-    26-Feb-2019 15:54:53 DEBUG GEOparse - SAMPLE: GSM523364
-    26-Feb-2019 15:54:53 DEBUG GEOparse - SAMPLE: GSM523365
-    26-Feb-2019 15:54:53 DEBUG GEOparse - SAMPLE: GSM523366
-    26-Feb-2019 15:54:53 DEBUG GEOparse - SAMPLE: GSM523367
-    26-Feb-2019 15:54:53 DEBUG GEOparse - SAMPLE: GSM523368
-    26-Feb-2019 15:54:53 DEBUG GEOparse - SAMPLE: GSM523369
-    26-Feb-2019 15:54:53 DEBUG GEOparse - SAMPLE: GSM523370
-    26-Feb-2019 15:54:53 DEBUG GEOparse - SAMPLE: GSM523371
-    26-Feb-2019 15:54:53 DEBUG GEOparse - SAMPLE: GSM523372
-    26-Feb-2019 15:54:53 DEBUG GEOparse - SAMPLE: GSM523373
-    26-Feb-2019 15:54:53 DEBUG GEOparse - SAMPLE: GSM523374
-    26-Feb-2019 15:54:53 DEBUG GEOparse - SAMPLE: GSM523375
-    26-Feb-2019 15:54:53 DEBUG GEOparse - SAMPLE: GSM523376
-    26-Feb-2019 15:54:54 DEBUG GEOparse - SAMPLE: GSM523377
-    26-Feb-2019 15:54:54 DEBUG GEOparse - SAMPLE: GSM523378
-    26-Feb-2019 15:54:54 DEBUG GEOparse - SAMPLE: GSM523379
-    26-Feb-2019 15:54:54 DEBUG GEOparse - SAMPLE: GSM523380
-    26-Feb-2019 15:54:54 DEBUG GEOparse - SAMPLE: GSM523381
-    26-Feb-2019 15:54:54 DEBUG GEOparse - SAMPLE: GSM523382
-    26-Feb-2019 15:54:54 DEBUG GEOparse - SAMPLE: GSM523383
-    26-Feb-2019 15:54:54 DEBUG GEOparse - SAMPLE: GSM523384
-    26-Feb-2019 15:54:54 DEBUG GEOparse - SAMPLE: GSM523385
-    26-Feb-2019 15:54:54 DEBUG GEOparse - SAMPLE: GSM523386
+    27-Feb-2019 12:58:16 DEBUG GEOparse - SAMPLE: GSM523242
+    27-Feb-2019 12:58:16 DEBUG GEOparse - SAMPLE: GSM523243
+    27-Feb-2019 12:58:16 DEBUG GEOparse - SAMPLE: GSM523244
+    27-Feb-2019 12:58:16 DEBUG GEOparse - SAMPLE: GSM523245
+    27-Feb-2019 12:58:16 DEBUG GEOparse - SAMPLE: GSM523246
+    27-Feb-2019 12:58:16 DEBUG GEOparse - SAMPLE: GSM523247
+    27-Feb-2019 12:58:16 DEBUG GEOparse - SAMPLE: GSM523248
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523249
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523250
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523251
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523252
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523253
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523254
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523255
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523256
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523257
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523258
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523259
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523260
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523261
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523262
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523263
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523264
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523265
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523266
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523267
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523268
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523269
+    27-Feb-2019 12:58:17 DEBUG GEOparse - SAMPLE: GSM523270
+    27-Feb-2019 12:58:18 DEBUG GEOparse - SAMPLE: GSM523271
+    27-Feb-2019 12:58:18 DEBUG GEOparse - SAMPLE: GSM523272
+    27-Feb-2019 12:58:18 DEBUG GEOparse - SAMPLE: GSM523273
+    27-Feb-2019 12:58:18 DEBUG GEOparse - SAMPLE: GSM523274
+    27-Feb-2019 12:58:18 DEBUG GEOparse - SAMPLE: GSM523275
+    27-Feb-2019 12:58:18 DEBUG GEOparse - SAMPLE: GSM523276
+    27-Feb-2019 12:58:18 DEBUG GEOparse - SAMPLE: GSM523277
+    27-Feb-2019 12:58:18 DEBUG GEOparse - SAMPLE: GSM523278
+    27-Feb-2019 12:58:18 DEBUG GEOparse - SAMPLE: GSM523279
+    27-Feb-2019 12:58:18 DEBUG GEOparse - SAMPLE: GSM523280
+    27-Feb-2019 12:58:18 DEBUG GEOparse - SAMPLE: GSM523281
+    27-Feb-2019 12:58:18 DEBUG GEOparse - SAMPLE: GSM523282
+    27-Feb-2019 12:58:18 DEBUG GEOparse - SAMPLE: GSM523283
+    27-Feb-2019 12:58:18 DEBUG GEOparse - SAMPLE: GSM523284
+    27-Feb-2019 12:58:18 DEBUG GEOparse - SAMPLE: GSM523285
+    27-Feb-2019 12:58:18 DEBUG GEOparse - SAMPLE: GSM523286
+    27-Feb-2019 12:58:18 DEBUG GEOparse - SAMPLE: GSM523287
+    27-Feb-2019 12:58:18 DEBUG GEOparse - SAMPLE: GSM523288
+    27-Feb-2019 12:58:18 DEBUG GEOparse - SAMPLE: GSM523289
+    27-Feb-2019 12:58:18 DEBUG GEOparse - SAMPLE: GSM523290
+    27-Feb-2019 12:58:18 DEBUG GEOparse - SAMPLE: GSM523291
+    27-Feb-2019 12:58:19 DEBUG GEOparse - SAMPLE: GSM523292
+    27-Feb-2019 12:58:19 DEBUG GEOparse - SAMPLE: GSM523293
+    27-Feb-2019 12:58:19 DEBUG GEOparse - SAMPLE: GSM523294
+    27-Feb-2019 12:58:19 DEBUG GEOparse - SAMPLE: GSM523295
+    27-Feb-2019 12:58:19 DEBUG GEOparse - SAMPLE: GSM523296
+    27-Feb-2019 12:58:19 DEBUG GEOparse - SAMPLE: GSM523297
+    27-Feb-2019 12:58:19 DEBUG GEOparse - SAMPLE: GSM523298
+    27-Feb-2019 12:58:19 DEBUG GEOparse - SAMPLE: GSM523299
+    27-Feb-2019 12:58:19 DEBUG GEOparse - SAMPLE: GSM523300
+    27-Feb-2019 12:58:19 DEBUG GEOparse - SAMPLE: GSM523301
+    27-Feb-2019 12:58:19 DEBUG GEOparse - SAMPLE: GSM523302
+    27-Feb-2019 12:58:19 DEBUG GEOparse - SAMPLE: GSM523303
+    27-Feb-2019 12:58:19 DEBUG GEOparse - SAMPLE: GSM523304
+    27-Feb-2019 12:58:19 DEBUG GEOparse - SAMPLE: GSM523305
+    27-Feb-2019 12:58:19 DEBUG GEOparse - SAMPLE: GSM523306
+    27-Feb-2019 12:58:19 DEBUG GEOparse - SAMPLE: GSM523307
+    27-Feb-2019 12:58:19 DEBUG GEOparse - SAMPLE: GSM523308
+    27-Feb-2019 12:58:19 DEBUG GEOparse - SAMPLE: GSM523309
+    27-Feb-2019 12:58:19 DEBUG GEOparse - SAMPLE: GSM523310
+    27-Feb-2019 12:58:20 DEBUG GEOparse - SAMPLE: GSM523311
+    27-Feb-2019 12:58:20 DEBUG GEOparse - SAMPLE: GSM523312
+    27-Feb-2019 12:58:20 DEBUG GEOparse - SAMPLE: GSM523313
+    27-Feb-2019 12:58:20 DEBUG GEOparse - SAMPLE: GSM523314
+    27-Feb-2019 12:58:20 DEBUG GEOparse - SAMPLE: GSM523315
+    27-Feb-2019 12:58:20 DEBUG GEOparse - SAMPLE: GSM523316
+    27-Feb-2019 12:58:20 DEBUG GEOparse - SAMPLE: GSM523317
+    27-Feb-2019 12:58:20 DEBUG GEOparse - SAMPLE: GSM523318
+    27-Feb-2019 12:58:20 DEBUG GEOparse - SAMPLE: GSM523319
+    27-Feb-2019 12:58:20 DEBUG GEOparse - SAMPLE: GSM523320
+    27-Feb-2019 12:58:20 DEBUG GEOparse - SAMPLE: GSM523321
+    27-Feb-2019 12:58:20 DEBUG GEOparse - SAMPLE: GSM523322
+    27-Feb-2019 12:58:20 DEBUG GEOparse - SAMPLE: GSM523323
+    27-Feb-2019 12:58:20 DEBUG GEOparse - SAMPLE: GSM523324
+    27-Feb-2019 12:58:20 DEBUG GEOparse - SAMPLE: GSM523325
+    27-Feb-2019 12:58:20 DEBUG GEOparse - SAMPLE: GSM523326
+    27-Feb-2019 12:58:20 DEBUG GEOparse - SAMPLE: GSM523327
+    27-Feb-2019 12:58:20 DEBUG GEOparse - SAMPLE: GSM523328
+    27-Feb-2019 12:58:20 DEBUG GEOparse - SAMPLE: GSM523329
+    27-Feb-2019 12:58:21 DEBUG GEOparse - SAMPLE: GSM523330
+    27-Feb-2019 12:58:21 DEBUG GEOparse - SAMPLE: GSM523331
+    27-Feb-2019 12:58:21 DEBUG GEOparse - SAMPLE: GSM523332
+    27-Feb-2019 12:58:21 DEBUG GEOparse - SAMPLE: GSM523333
+    27-Feb-2019 12:58:21 DEBUG GEOparse - SAMPLE: GSM523334
+    27-Feb-2019 12:58:21 DEBUG GEOparse - SAMPLE: GSM523335
+    27-Feb-2019 12:58:21 DEBUG GEOparse - SAMPLE: GSM523336
+    27-Feb-2019 12:58:21 DEBUG GEOparse - SAMPLE: GSM523337
+    27-Feb-2019 12:58:21 DEBUG GEOparse - SAMPLE: GSM523338
+    27-Feb-2019 12:58:21 DEBUG GEOparse - SAMPLE: GSM523339
+    27-Feb-2019 12:58:21 DEBUG GEOparse - SAMPLE: GSM523340
+    27-Feb-2019 12:58:21 DEBUG GEOparse - SAMPLE: GSM523341
+    27-Feb-2019 12:58:21 DEBUG GEOparse - SAMPLE: GSM523342
+    27-Feb-2019 12:58:21 DEBUG GEOparse - SAMPLE: GSM523343
+    27-Feb-2019 12:58:21 DEBUG GEOparse - SAMPLE: GSM523344
+    27-Feb-2019 12:58:21 DEBUG GEOparse - SAMPLE: GSM523345
+    27-Feb-2019 12:58:21 DEBUG GEOparse - SAMPLE: GSM523346
+    27-Feb-2019 12:58:21 DEBUG GEOparse - SAMPLE: GSM523347
+    27-Feb-2019 12:58:21 DEBUG GEOparse - SAMPLE: GSM523348
+    27-Feb-2019 12:58:21 DEBUG GEOparse - SAMPLE: GSM523349
+    27-Feb-2019 12:58:22 DEBUG GEOparse - SAMPLE: GSM523350
+    27-Feb-2019 12:58:22 DEBUG GEOparse - SAMPLE: GSM523351
+    27-Feb-2019 12:58:22 DEBUG GEOparse - SAMPLE: GSM523352
+    27-Feb-2019 12:58:22 DEBUG GEOparse - SAMPLE: GSM523353
+    27-Feb-2019 12:58:22 DEBUG GEOparse - SAMPLE: GSM523354
+    27-Feb-2019 12:58:22 DEBUG GEOparse - SAMPLE: GSM523355
+    27-Feb-2019 12:58:22 DEBUG GEOparse - SAMPLE: GSM523356
+    27-Feb-2019 12:58:22 DEBUG GEOparse - SAMPLE: GSM523357
+    27-Feb-2019 12:58:22 DEBUG GEOparse - SAMPLE: GSM523358
+    27-Feb-2019 12:58:22 DEBUG GEOparse - SAMPLE: GSM523359
+    27-Feb-2019 12:58:22 DEBUG GEOparse - SAMPLE: GSM523360
+    27-Feb-2019 12:58:22 DEBUG GEOparse - SAMPLE: GSM523361
+    27-Feb-2019 12:58:22 DEBUG GEOparse - SAMPLE: GSM523362
+    27-Feb-2019 12:58:22 DEBUG GEOparse - SAMPLE: GSM523363
+    27-Feb-2019 12:58:22 DEBUG GEOparse - SAMPLE: GSM523364
+    27-Feb-2019 12:58:22 DEBUG GEOparse - SAMPLE: GSM523365
+    27-Feb-2019 12:58:22 DEBUG GEOparse - SAMPLE: GSM523366
+    27-Feb-2019 12:58:22 DEBUG GEOparse - SAMPLE: GSM523367
+    27-Feb-2019 12:58:22 DEBUG GEOparse - SAMPLE: GSM523368
+    27-Feb-2019 12:58:23 DEBUG GEOparse - SAMPLE: GSM523369
+    27-Feb-2019 12:58:23 DEBUG GEOparse - SAMPLE: GSM523370
+    27-Feb-2019 12:58:23 DEBUG GEOparse - SAMPLE: GSM523371
+    27-Feb-2019 12:58:23 DEBUG GEOparse - SAMPLE: GSM523372
+    27-Feb-2019 12:58:23 DEBUG GEOparse - SAMPLE: GSM523373
+    27-Feb-2019 12:58:23 DEBUG GEOparse - SAMPLE: GSM523374
+    27-Feb-2019 12:58:23 DEBUG GEOparse - SAMPLE: GSM523375
+    27-Feb-2019 12:58:23 DEBUG GEOparse - SAMPLE: GSM523376
+    27-Feb-2019 12:58:23 DEBUG GEOparse - SAMPLE: GSM523377
+    27-Feb-2019 12:58:23 DEBUG GEOparse - SAMPLE: GSM523378
+    27-Feb-2019 12:58:23 DEBUG GEOparse - SAMPLE: GSM523379
+    27-Feb-2019 12:58:23 DEBUG GEOparse - SAMPLE: GSM523380
+    27-Feb-2019 12:58:23 DEBUG GEOparse - SAMPLE: GSM523381
+    27-Feb-2019 12:58:23 DEBUG GEOparse - SAMPLE: GSM523382
+    27-Feb-2019 12:58:23 DEBUG GEOparse - SAMPLE: GSM523383
+    27-Feb-2019 12:58:23 DEBUG GEOparse - SAMPLE: GSM523384
+    27-Feb-2019 12:58:23 DEBUG GEOparse - SAMPLE: GSM523385
+    27-Feb-2019 12:58:23 DEBUG GEOparse - SAMPLE: GSM523386
 
 
     Data processing summary:
@@ -374,6 +375,35 @@ xp.gene_overview(df_GSE8671_labeled, info_GSE8671, gene_name='LDHB',palette=gse8
 
 
 ```python
+#Statistical tests
+GSE8671_stats = df_GSE8671_labeled.loc[['MPC1','MPC2','LDHA','LDHB']]
+GSE8671_norm = GSE8671_stats[info_GSE8671.loc[info_GSE8671[1] == 'Normal'][0].tolist()]
+GSE8671_ad = GSE8671_stats[info_GSE8671.loc[info_GSE8671[1] == 'Adenoma'][0].tolist()]
+
+print('GSE8671')
+
+statistic, pvalue = stats.ttest_ind(xp.get_array(GSE8671_norm, 'MPC1'), xp.get_array(GSE8671_ad, 'MPC1'))
+print('MPC1: statistic=' + str(statistic) + ', p-value=' + str(pvalue))
+
+statistic, pvalue = stats.ttest_ind(xp.get_array(GSE8671_norm, 'MPC2'), xp.get_array(GSE8671_ad, 'MPC2'))
+print('MPC2: statistic=' + str(statistic) + ', p-value=' + str(pvalue))
+
+statistic, pvalue = stats.ttest_ind(xp.get_array(GSE8671_norm, 'LDHA'), xp.get_array(GSE8671_ad, 'LDHA'))
+print('LDHA: statistic=' + str(statistic) + ', p-value=' + str(pvalue))
+
+statistic, pvalue = stats.ttest_ind(xp.get_array(GSE8671_norm, 'LDHB'), xp.get_array(GSE8671_ad, 'LDHB'))
+print('LDHB: statistic=' + str(statistic) + ', p-value=' + str(pvalue))
+```
+
+    GSE8671
+    MPC1: statistic=10.167173312808213, p-value=7.832673691998662e-15
+    MPC2: statistic=7.042275616107644, p-value=1.8167807870916475e-09
+    LDHA: statistic=-7.6474345119041285, p-value=1.6196790872134913e-10
+    LDHB: statistic=-9.23814192878943, p-value=2.90854219689722e-13
+
+
+
+```python
 """
 LDH and MPC Relationship in Human Dataset GSE20916
 """
@@ -387,7 +417,7 @@ xp.gene_overview(df_GSE20916_labeled, info_GSE20916, gene_name='MPC1',palette=gs
 
 
 
-![png](output_20_1.png)
+![png](output_21_1.png)
 
 
 
@@ -402,7 +432,7 @@ xp.gene_overview(df_GSE20916_labeled, info_GSE20916, gene_name='MPC2',palette=gs
 
 
 
-![png](output_21_1.png)
+![png](output_22_1.png)
 
 
 
@@ -417,7 +447,7 @@ xp.gene_overview(df_GSE20916_labeled, info_GSE20916, gene_name='LDHA',palette=gs
 
 
 
-![png](output_22_1.png)
+![png](output_23_1.png)
 
 
 
@@ -432,7 +462,37 @@ xp.gene_overview(df_GSE20916_labeled, info_GSE20916, gene_name='LDHB',palette=gs
 
 
 
-![png](output_23_1.png)
+![png](output_24_1.png)
+
+
+
+```python
+#Statistical tests
+GSE20916_stats = df_GSE20916_labeled.loc[['MPC1','MPC2','LDHA','LDHB']]
+GSE20916_norm = GSE20916_stats[info_GSE20916.loc[info_GSE20916[1] == 'Normal'][0].tolist()]
+GSE20916_ad = GSE20916_stats[info_GSE20916.loc[info_GSE20916[1] == 'Adenoma'][0].tolist()]
+GSE20916_ac = GSE20916_stats[info_GSE20916.loc[info_GSE20916[1] == 'Adenocarcinoma'][0].tolist()]
+
+print('GSE20916')
+
+statistic, pvalue = stats.f_oneway(xp.get_array(GSE20916_norm, 'MPC1'), xp.get_array(GSE20916_ad, 'MPC1'), xp.get_array(GSE20916_ac, 'MPC1'))
+print('MPC1: statistic=' + str(statistic) + ', p-value=' + str(pvalue))
+
+statistic, pvalue = stats.f_oneway(xp.get_array(GSE20916_norm, 'MPC2'), xp.get_array(GSE20916_ad, 'MPC2'), xp.get_array(GSE20916_ac, 'MPC2'))
+print('MPC2: statistic=' + str(statistic) + ', p-value=' + str(pvalue))
+
+statistic, pvalue = stats.f_oneway(xp.get_array(GSE20916_norm, 'LDHA'), xp.get_array(GSE20916_ad, 'LDHA'), xp.get_array(GSE20916_ac, 'LDHA'))
+print('LDHA: statistic=' + str(statistic) + ', p-value=' + str(pvalue))
+
+statistic, pvalue = stats.f_oneway(xp.get_array(GSE20916_norm, 'LDHB'), xp.get_array(GSE20916_ad, 'LDHB'), xp.get_array(GSE20916_ac, 'LDHB'))
+print('LDHB: statistic=' + str(statistic) + ', p-value=' + str(pvalue))
+```
+
+    GSE20916
+    MPC1: statistic=26.964814631493052, p-value=3.974182418383989e-10
+    MPC2: statistic=7.677818534895132, p-value=0.0007832619616353155
+    LDHA: statistic=21.894985484242113, p-value=1.2260230535988391e-08
+    LDHB: statistic=22.62903348487773, p-value=7.354868309053971e-09
 
 
 <b><u>FIGURE 1 SUPPLEMENT</u></b> 
@@ -443,44 +503,9 @@ xp.gene_overview(df_GSE20916_labeled, info_GSE20916, gene_name='LDHB',palette=gs
 Pyruvate-related Gene Expression Changes in Human Dataset GSE8671
 """
 xp.heatmap(df_GSE8671_scaled_sorted, info_GSE8671, sample_palette=gse8671_colors, gene_list=pyru_list, 
-            figsize=(14,16), save_fig=(__path__ + 'plots/GSE8671_customPyruvate_heatmap_colclustered.pdf'),
+            figsize=(14,8), save_fig=(__path__ + 'plots/GSE8671_customPyruvate_heatmap_colclustered.pdf'),
             row_cluster=True, col_cluster=True,
-            cbar_kws={'label': 'z-score'})
-```
-
-
-    <Figure size 432x288 with 0 Axes>
-
-
-
-![png](output_25_1.png)
-
-
-
-```python
-xp.heatmap(df_GSE8671_scaled_sorted, info_GSE8671, sample_palette=gse8671_colors, gene_list=pyru_list, 
-            figsize=(14,16), save_fig=(__path__ + 'plots/GSE8671_customPyruvate_heatmap.pdf'),
-            row_cluster=True, col_cluster=False,
-            cbar_kws={'label': 'z-score'})
-```
-
-
-    <Figure size 432x288 with 0 Axes>
-
-
-
-![png](output_26_1.png)
-
-
-
-```python
-"""
-Pyruvate-related Gene Expression Changes in Human Dataset GSE20916
-"""
-xp.heatmap(df_GSE20916_scaled_sorted, info_GSE20916, sample_palette=gse20916_colors, gene_list=pyru_list, 
-            figsize=(30,16), save_fig=(__path__ + 'plots/GSE20916_customPyruvate_heatmap_colclustered.pdf'),
-            row_cluster=True, col_cluster=True,
-            cbar_kws={'label': 'z-score'})
+            cbar_kws={'label': 'z-score'}, linewidths=0)
 ```
 
 
@@ -493,10 +518,10 @@ xp.heatmap(df_GSE20916_scaled_sorted, info_GSE20916, sample_palette=gse20916_col
 
 
 ```python
-xp.heatmap(df_GSE20916_scaled_sorted, info_GSE20916, sample_palette=gse20916_colors, gene_list=pyru_list, 
-            figsize=(30,16), save_fig=(__path__ + 'plots/GSE20916_customPyruvate_heatmap.pdf'),
+xp.heatmap(df_GSE8671_scaled_sorted, info_GSE8671, sample_palette=gse8671_colors, gene_list=pyru_list, 
+            figsize=(14,8), save_fig=(__path__ + 'plots/GSE8671_customPyruvate_heatmap.pdf'),
             row_cluster=True, col_cluster=False,
-            cbar_kws={'label': 'z-score'})
+            cbar_kws={'label': 'z-score'}, linewidths=0)
 ```
 
 
@@ -505,6 +530,41 @@ xp.heatmap(df_GSE20916_scaled_sorted, info_GSE20916, sample_palette=gse20916_col
 
 
 ![png](output_28_1.png)
+
+
+
+```python
+"""
+Pyruvate-related Gene Expression Changes in Human Dataset GSE20916
+"""
+xp.heatmap(df_GSE20916_scaled_sorted, info_GSE20916, sample_palette=gse20916_colors, gene_list=pyru_list, 
+            figsize=(30,8), save_fig=(__path__ + 'plots/GSE20916_customPyruvate_heatmap_colclustered.pdf'),
+            row_cluster=True, col_cluster=True,
+            cbar_kws={'label': 'z-score'}, linewidths=0)
+```
+
+
+    <Figure size 432x288 with 0 Axes>
+
+
+
+![png](output_29_1.png)
+
+
+
+```python
+xp.heatmap(df_GSE20916_scaled_sorted, info_GSE20916, sample_palette=gse20916_colors, gene_list=pyru_list, 
+            figsize=(30,8), save_fig=(__path__ + 'plots/GSE20916_customPyruvate_heatmap.pdf'),
+            row_cluster=True, col_cluster=False,
+            cbar_kws={'label': 'z-score'}, linewidths=0)
+```
+
+
+    <Figure size 432x288 with 0 Axes>
+
+
+
+![png](output_30_1.png)
 
 
 
@@ -520,7 +580,7 @@ xp.pca(df_GSE8671_scaled, info_GSE8671, palette=gse8671_colors,
 ```
 
 
-![png](output_29_0.png)
+![png](output_31_0.png)
 
 
 
@@ -535,7 +595,7 @@ xp.pca(df_GSE8671_scaled, info_GSE8671, palette=gse8671_colors,
 ```
 
 
-![png](output_30_0.png)
+![png](output_32_0.png)
 
 
 
@@ -551,7 +611,7 @@ xp.pca(df_GSE20916_scaled, info_GSE20916, palette=gse20916_colors, order_legend=
 ```
 
 
-![png](output_31_0.png)
+![png](output_33_0.png)
 
 
 
@@ -566,7 +626,7 @@ xp.pca(df_GSE20916_scaled, info_GSE20916, palette=gse20916_colors, order_legend=
 ```
 
 
-![png](output_32_0.png)
+![png](output_34_0.png)
 
 
 <b><u>FIGURE 4</u></b> 
@@ -578,43 +638,7 @@ Mouse AOMDSS Heatmap Custom22 Probes
 """
 xp.heatmap(aomdss_scaled, aomdss_info, sample_palette=aomdss_colors, gene_list=custom22_mouse, 
             figsize=(16,6.5), save_fig=(__path__ + 'plots/AOMDSS_custom22_heatmap.pdf'), 
-            cbar_kws={'label': 'z-score'})
-```
-
-
-    <Figure size 432x288 with 0 Axes>
-
-
-
-![png](output_34_1.png)
-
-
-
-```python
-"""
-Mouse APC Heatmap Custom22 Probes
-"""
-xp.heatmap(apc_scaled, apc_info, sample_palette=apc_colors, gene_list=custom22_mouse, 
-            figsize=(16,6.5), save_fig=(__path__ + 'plots/APC_custom22_heatmap.pdf'), 
-            cbar_kws={'label': 'z-score'})
-```
-
-
-    <Figure size 432x288 with 0 Axes>
-
-
-
-![png](output_35_1.png)
-
-
-
-```python
-"""
-Human GSE8671 Heatmap Custom22 Probes
-"""
-xp.heatmap(df_GSE8671_scaled, info_GSE8671, sample_palette=gse8671_colors, gene_list=custom22_human, 
-            figsize=(22,8), save_fig=(__path__ + 'plots/GSE8671_custom22_heatmap.pdf'), 
-            cbar_kws={'label': 'z-score'})
+            cbar_kws={'label': 'z-score'}, linewidths=0)
 ```
 
 
@@ -628,11 +652,11 @@ xp.heatmap(df_GSE8671_scaled, info_GSE8671, sample_palette=gse8671_colors, gene_
 
 ```python
 """
-Human GSE20916 Heatmap Custom22 Probes
+Mouse APC Heatmap Custom22 Probes
 """
-xp.heatmap(df_GSE20916_scaled, info_GSE20916, sample_palette=gse20916_colors, gene_list=custom22_human, 
-            figsize=(40,8), save_fig=(__path__ + 'plots/GSE20916_custom22_heatmap.pdf'), 
-            cbar_kws={'label': 'z-score'})
+xp.heatmap(apc_scaled, apc_info, sample_palette=apc_colors, gene_list=custom22_mouse, 
+            figsize=(16,6.5), save_fig=(__path__ + 'plots/APC_custom22_heatmap.pdf'), 
+            cbar_kws={'label': 'z-score'}, linewidths=0)
 ```
 
 
@@ -641,6 +665,42 @@ xp.heatmap(df_GSE20916_scaled, info_GSE20916, sample_palette=gse20916_colors, ge
 
 
 ![png](output_37_1.png)
+
+
+
+```python
+"""
+Human GSE8671 Heatmap Custom22 Probes
+"""
+xp.heatmap(df_GSE8671_scaled, info_GSE8671, sample_palette=gse8671_colors, gene_list=custom22_human, 
+            figsize=(22,8), save_fig=(__path__ + 'plots/GSE8671_custom22_heatmap.pdf'), 
+            cbar_kws={'label': 'z-score'}, linewidths=0)
+```
+
+
+    <Figure size 432x288 with 0 Axes>
+
+
+
+![png](output_38_1.png)
+
+
+
+```python
+"""
+Human GSE20916 Heatmap Custom22 Probes
+"""
+xp.heatmap(df_GSE20916_scaled, info_GSE20916, sample_palette=gse20916_colors, gene_list=custom22_human, 
+            figsize=(40,8), save_fig=(__path__ + 'plots/GSE20916_custom22_heatmap.pdf'), 
+            cbar_kws={'label': 'z-score'}, linewidths=0)
+```
+
+
+    <Figure size 432x288 with 0 Axes>
+
+
+
+![png](output_39_1.png)
 
 
 <b><u>FIGURE 4 SUPPLEMENT</u></b> 
@@ -658,7 +718,7 @@ xp.pca(aomdss_scaled, aomdss_info, palette=aomdss_colors, order_legend=[3,4,2,1]
 ```
 
 
-![png](output_39_0.png)
+![png](output_41_0.png)
 
 
 
@@ -674,7 +734,7 @@ xp.pca(apc_scaled, apc_info, palette=apc_colors, order_legend=[2,3,1,4], n_compo
 ```
 
 
-![png](output_40_0.png)
+![png](output_42_0.png)
 
 
 
@@ -690,7 +750,7 @@ xp.pca(df_GSE8671_scaled, info_GSE8671, palette=gse8671_colors, n_components=2,
 ```
 
 
-![png](output_41_0.png)
+![png](output_43_0.png)
 
 
 
@@ -706,7 +766,7 @@ xp.pca(df_GSE20916_scaled, info_GSE20916, palette=gse20916_colors, order_legend=
 ```
 
 
-![png](output_42_0.png)
+![png](output_44_0.png)
 
 
 
@@ -731,7 +791,7 @@ xp.jointplot(df_GSE8671_collapsed, info_GSE8671, 'MPC1', 'AXIN2', palette=gse867
 
 
 
-![png](output_43_2.png)
+![png](output_45_2.png)
 
 
 
@@ -750,7 +810,7 @@ xp.jointplot(df_GSE8671_collapsed, info_GSE8671, 'MPC1', 'SOX9', palette=gse8671
 
 
 
-![png](output_44_1.png)
+![png](output_46_1.png)
 
 
 
@@ -769,7 +829,7 @@ xp.jointplot(df_GSE20916_collapsed_noac, info_GSE20916, 'MPC1', 'AXIN2', palette
 
 
 
-![png](output_45_1.png)
+![png](output_47_1.png)
 
 
 
@@ -788,7 +848,7 @@ xp.jointplot(df_GSE20916_collapsed_noac, info_GSE20916, 'MPC1', 'SOX9', palette=
 
 
 
-![png](output_46_1.png)
+![png](output_48_1.png)
 
 
 
@@ -807,7 +867,7 @@ xp.jointplot(df_GSE20916_collapsed, info_GSE20916, 'MPC1', 'AXIN2', palette=gse2
 
 
 
-![png](output_47_1.png)
+![png](output_49_1.png)
 
 
 
@@ -826,7 +886,7 @@ xp.jointplot(df_GSE20916_collapsed, info_GSE20916, 'MPC1', 'SOX9', palette=gse20
 
 
 
-![png](output_48_1.png)
+![png](output_50_1.png)
 
 
 <b><u>FIGURE 4 CORRELATIONS</u></b> 
