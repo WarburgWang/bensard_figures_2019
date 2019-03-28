@@ -1,3 +1,5 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/j-berg/bensard_figures_2019/master?filepath=https%3A%2F%2Fgithub.com%2Fj-berg%2Fbensard_figures_2019%2Fblob%2Fmaster%2FBensard_Figures_2019.ipynb)
+
 ### What does this repository contain?
 This repository contains the code needed to specify the indicated figures from the Bensard, et. al. 2019 manuscript.   
 
