@@ -10,11 +10,11 @@ This repository contains the code needed to specify the indicated figures from t
 
 ### Requirements:  
 * Python3   
-* pandas
-* numpy
-* scipy
-* matplotlib
-* scikit-learn
-* xpressplot
+* Pandas
+* NumPy
+* SciPy
+* Matplotlib
+* Scikit-Learn
+* XPRESSplot
 * GEOparse
 * statsmodels
