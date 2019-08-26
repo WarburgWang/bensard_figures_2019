@@ -1,4 +1,5 @@
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/j-berg/bensard_figures_2019/master)
+[![DOI](https://zenodo.org/badge/172804995.svg)](https://zenodo.org/badge/latestdoi/172804995)
 
 ### What does this repository contain?
 This repository contains the code needed to specify the indicated figures from the Bensard, et. al. 2019 manuscript.   
