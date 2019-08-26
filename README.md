@@ -10,9 +10,11 @@ This repository contains the code needed to specify the indicated figures from t
 
 ### Requirements:  
 * Python3   
-* pandas  
-* scipy   
-* git-lfs   
-* [XPRESStools](https://github.com/XPRESSyourself/XPRESStools) [v0.0.2b1](https://github.com/XPRESSyourself/XPRESStools/releases/tag/XPRESStools-v.0.0.2b1)
-
-
+* pandas
+* numpy
+* scipy
+* matplotlib
+* scikit-learn
+* xpressplot
+* GEOparse
+* statsmodels
