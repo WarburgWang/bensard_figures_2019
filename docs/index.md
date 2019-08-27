@@ -22082,24 +22082,34 @@ xp.gene_overview(df_GSE20916_labeled, info_GSE20916, gene_name='LDHB',palette=gs
 GSE20916_stats = df_GSE20916_labeled.copy()
 GSE20916_norm = GSE20916_stats[info_GSE20916.loc[info_GSE20916[1] == 'Normal'][0].tolist()]
 GSE20916_ad = GSE20916_stats[info_GSE20916.loc[info_GSE20916[1] == 'Adenoma'][0].tolist()]
+GSE20916_ac = GSE20916_stats[info_GSE20916.loc[info_GSE20916[1] == 'Adenocarcinoma'][0].tolist()]
 
-p_vals = []
+p_vals_ad = []
+p_vals_ac = []
 genes = GSE20916_stats.index.tolist()
 
 total = len(genes) - 1
 counter = 1
 
 for x in genes[1:]:
-    s, p = stats.ranksums(xp.get_array(GSE20916_norm, str(x)), xp.get_array(GSE20916_ad, str(x)))
-    p_vals.append(p) 
+    s_ad, p_ad = stats.ranksums(xp.get_array(GSE20916_norm, str(x)), xp.get_array(GSE20916_ad, str(x)))
+    p_vals_ad.append(p_ad) 
+    
+    s_ad, p_ac = stats.ranksums(xp.get_array(GSE20916_norm, str(x)), xp.get_array(GSE20916_ac, str(x)))
+    p_vals_ac.append(p_ac)
+    
     print(counter,'/',total)
     counter += 1
 
-fdr = multipletests(p_vals, alpha=0.05, method='fdr_bh')
+fdr_ad = multipletests(p_vals_ad, alpha=0.05, method='fdr_bh')
+fdr_ac = multipletests(p_vals_ac, alpha=0.05, method='fdr_bh')
 
 sig_data = pd.DataFrame()
-sig_data[0] = p_vals 
-sig_data[1] = fdr[1]
+sig_data[0] = p_vals_ad 
+sig_data[1] = fdr_ad[1]
+sig_data[2] = p_vals_ac
+sig_data[3] = fdr_ac[1]
+
 sig_data.index = genes[1:]
 ```
 
@@ -34087,6 +34097,21 @@ print('LDHA: FDR=' + str(sig_data.loc['LDHA'][1]))
 
 #LDHB
 print('LDHB: FDR=' + str(sig_data.loc['LDHB'][1]))
+
+print('')
+print('GSE20916 FDR for Normal vs Adenocarcinoma')
+
+#MPC1
+print('MPC1: FDR=' + str(sig_data.loc['MPC1'][3]))
+
+#MPC2
+print('MPC2: FDR=' + str(sig_data.loc['MPC2'][3]))
+
+#LDHA
+print('LDHA: FDR=' + str(sig_data.loc['LDHA'][3]))
+
+#LDHB
+print('LDHB: FDR=' + str(sig_data.loc['LDHB'][3]))
 ```
 
     GSE20916 FDR for Normal vs Adenoma
@@ -34094,6 +34119,12 @@ print('LDHB: FDR=' + str(sig_data.loc['LDHB'][1]))
     MPC2: FDR=1.7172807817415693e-05
     LDHA: FDR=0.0002574743207763419
     LDHB: FDR=2.8134953763073485e-07
+    
+    GSE20916 FDR for Normal vs Adenocarcinoma
+    MPC1: FDR=4.746379251491133e-06
+    MPC2: FDR=0.06426095127053551
+    LDHA: FDR=1.474973692220452e-05
+    LDHB: FDR=1.896386031707828e-05
 
 
 ## Pyruvate Metabolism in Human Microarrays and Mouse Nanostring Experiments
@@ -34536,25 +34567,43 @@ xp.jointplot(df_GSE20916_collapsed, info_GSE20916, 'MPC1', 'SOX9', palette=gse20
 
 
 ```python
+def add_fdr(file):
+    
+    data = pd.read_csv(
+        file,
+        sep=',')
+    p_vals = data['p_value'].values.tolist()
+    fdr = multipletests(p_vals, alpha=0.05, method='fdr_bh')
+    data['fdr'] = fdr[1]
+    
+    data.to_csv(file)
+
+    
 #GSE20916/MPC1/ALL
 xp.linreg(df_GSE20916_collapsed, 'MPC1', __path__ + 'data/GSE20916_MPC1_ALL_correlations.csv')
+add_fdr(__path__ + 'data/GSE20916_MPC1_ALL_correlations.csv')
 
 #GSE20916/MPC2/ALL
 xp.linreg(df_GSE20916_collapsed, 'MPC2', __path__ + 'data/GSE20916_MPC2_ALL_correlations.csv')
+add_fdr(__path__ + 'data/GSE20916_MPC2_ALL_correlations.csv')
 
 #GSE20916/MPC1/NoAdenocarcinoma
 df_GSE20916_collapsed_noAC = xp.drop_label(df_GSE20916_collapsed, info_GSE20916, 'Adenocarcinoma')
 xp.linreg(df_GSE20916_collapsed_noAC, 'MPC1', __path__ + 'data/GSE20916_MPC1_noAC_correlations.csv')
+add_fdr(__path__ + 'data/GSE20916_MPC1_noAC_correlations.csv')
 
 #GSE20916/MPC2/NoAdenocarcinoma
 df_GSE20916_collapsed_noAC = xp.drop_label(df_GSE20916_collapsed, info_GSE20916, 'Adenocarcinoma')
 xp.linreg(df_GSE20916_collapsed_noAC, 'MPC2', __path__ + 'data/GSE20916_MPC2_noAC_correlations.csv')
+add_fdr(__path__ + 'data/GSE20916_MPC2_noAC_correlations.csv')
 
 #GSE8671/MPC1/ALL
 xp.linreg(df_GSE8671_collapsed, 'MPC1', __path__ + 'data/GSE8671_MPC1_ALL_correlations.csv')
+add_fdr(__path__ + 'data/GSE8671_MPC1_ALL_correlations.csv')
 
 #GSE8671/MPC2/ALL
 xp.linreg(df_GSE8671_collapsed, 'MPC2', __path__ + 'data/GSE8671_MPC2_ALL_correlations.csv')
+add_fdr(__path__ + 'data/GSE8671_MPC2_ALL_correlations.csv')
 ```
 
 ## TCGA GTEx Survey of MPC and LDH Expression
@@ -53822,7 +53871,7 @@ sig_data.index = genes[1:]
 
 
 ```python
-print('GSE20916 FDR for Normal vs Adenoma')
+print('GTEx/TCGA FDR for Normal vs Adenoma')
 
 #MPC1
 print('MPC1: FDR=' + str(sig_data.loc['MPC1'][1]))
@@ -53841,7 +53890,7 @@ print('LDHB: FDR=' + str(sig_data.loc['LDHB'][1]))
 print('\tD=' + str(sig_data.loc['LDHB'][2]))
 ```
 
-    GSE20916 FDR for Normal vs Adenoma
+    GTEx/TCGA FDR for Normal vs Adenoma
     MPC1: FDR=7.705583486288622e-95
     	D=-2.103597139871266
     MPC2: FDR=3.7429732880948714e-32
