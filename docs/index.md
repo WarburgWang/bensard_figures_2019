@@ -34685,8 +34685,6 @@ sample_colors = {'GTEX_Normal': '#005f42',
 
 ldh = ['LDHA',
         'LDHB',
-        'LDHC',
-        'LDHD',
         'MPC1',
         'MPC2']
 data_scale_ldh = data_scale.copy()
@@ -34702,7 +34700,7 @@ xp.heatmap(
     sample_colors,
     col_cluster = False,
     xticklabels = False,
-    figsize=(20,3))
+    figsize=(15,1.5))
 
 colors = {'GTEx Normal': '#005f42',
           'TCGA Normal': (0.00784313725490196, 0.6196078431372549, 0.45098039215686275),
@@ -34713,7 +34711,7 @@ g = lambda m,c: plt.plot([],[],marker='o', color=c, ls="none")[0]
 handles_g = [g("s", list(colors.values())[i]) for i in range(len(list(colors.values())))]
 plt.legend(handles_g, list(colors.keys()), bbox_to_anchor=(0, -7), loc=3, borderaxespad=0., title='Samples')
 
-plt.savefig(__path__ + 'plots/tcga_mpc_ldf_heatmap.pdf',dpi=1800,bbox_inches='tight')
+plt.savefig(__path__ + 'plots/tcga_mpc_ldh_heatmap.pdf',dpi=1800,bbox_inches='tight')
 plt.show()
 ```
 
