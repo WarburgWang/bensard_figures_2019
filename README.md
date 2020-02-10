@@ -1,6 +1,11 @@
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/j-berg/bensard_figures_2019/master)
 [![DOI](https://zenodo.org/badge/172804995.svg)](https://zenodo.org/badge/latestdoi/172804995)
 
+### Associated citation:
+```
+Bensard CL, Wisidigama DR, Olsen KA, Berg JA, Krah NM, Schell JC, Nowinski SM, Fogarty S, Bott AJ, Wei P, Dove KK, Tanner JM, Panic V, Cluntun A, Lettlova S, Earl CS, Namnath DF, Vázquez-Arregun K, Villanueva CJ, Tantin D, Murtaugh LC, Evason KJ, Ducker GS, Thummel CS, Rutter J. Regulation of Tumor Initiation by the Mitochondrial Pyruvate Carrier. (2019) Cell Metabolism. DOI: 10.1016/j.cmet.2019.11.002
+```
+
 ### What does this repository contain?
 This repository contains the code needed to specify the indicated figures from the Bensard, et. al. 2019 manuscript.   
 
